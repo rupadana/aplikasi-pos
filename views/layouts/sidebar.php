@@ -6,7 +6,6 @@
 <?php 
   $id = $_SESSION['admin']['id_member'];
   $hasil_profil = Member::member_edit($id);
-  var_dump($hasil_profil);
 ?>
       <aside>
           <div id="sidebar"  class="nav-collapse">

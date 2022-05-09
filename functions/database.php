@@ -2,11 +2,11 @@
 
 
 class DB {
-
     static public $_table;
     static private $pdo;
     static private $_where = [];
     static private $_join= [];
+    static private $_orderby = "";
 
     /**
      * Deklarasi variable select 
@@ -87,6 +87,7 @@ class DB {
      * @return array|null
      */
     public static function first() {
+        
         $row = self::$pdo->prepare(self::raw_query("get"));
         $row->execute();
         $rowCount = $row->rowCount();
@@ -114,6 +115,12 @@ class DB {
         return new static();
     }
 
+    public static function orderBy($column, $scending) {
+        self::$_orderby = " ORDER BY $column $scending";
+
+        return new static();
+    }
+
     public static function raw_query($type = "") {
         $query = "";
         switch ($type) {
@@ -132,7 +139,7 @@ class DB {
 
 
 
-                // $query .= $_where;
+                $query .= self::$_orderby;
                 break;
             
         }
