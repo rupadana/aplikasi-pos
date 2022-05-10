@@ -105,13 +105,13 @@
 										<td> <?php echo $isi['satuan_barang'];?></td>
 										<td>
 											<?php if($isi['stok'] <=  '3'){?>
-												<form method="POST" action="fungsi/edit/edit.php?stok=edit">
-													<input type="text" name="restok" class="form-control">
+												<form method="POST" action="controllers/barang.php?action=restock">
+													<input type="number" name="restok" class="form-control">
 													<input type="hidden" name="id" value="<?php echo $isi['id_barang'];?>" class="form-control">
 													<button class="btn btn-primary btn-sm">
 														Restok
 													</button>
-													<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi['id_barang'];?>" 
+													<a href="controllers/barang.php?action=delete&id=<?php echo $isi['id_barang'];?>" 
 														onclick="javascript:return confirm('Hapus Data barang ?');">
 														<button class="btn btn-danger btn-sm">Hapus</button></a>
 												</form>
@@ -119,7 +119,7 @@
 											<a href="index.php?page=barang/details&barang=<?php echo $isi['id_barang'];?>"><button class="btn btn-primary btn-xs">Details</button></a>
 										
 											<a href="index.php?page=barang/edit&barang=<?php echo $isi['id_barang'];?>"><button class="btn btn-warning btn-xs">Edit</button></a>
-											<a href="fungsi/hapus/hapus.php?barang=hapus&id=<?php echo $isi['id_barang'];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
+											<a href="controllers/barang.php?action=delete&id=<?php echo $isi['id_barang'];?>" onclick="javascript:return confirm('Hapus Data barang ?');"><button class="btn btn-danger btn-xs">Hapus</button></a>
 											<?php }?>
 											
 											
@@ -156,7 +156,7 @@
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<h4 class="modal-title"><i class="fa fa-plus"></i> Tambah Barang</h4>
 								</div>										
-								<form action="fungsi/tambah/tambah.php?barang=tambah" method="POST">
+								<form action="controllers/barang.php?action=tambah" method="POST">
 									<div class="modal-body">
 								
 										<table class="table table-striped bordered">

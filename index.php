@@ -4,7 +4,6 @@ include "./helpers/loaders.php";
 
 @ob_start();
 session_start();
-
 if (!empty($_SESSION['admin'])) {
 	include __DIR__ . '/views/layouts/header.php';
 	include __DIR__ . '/views/layouts/sidebar.php';

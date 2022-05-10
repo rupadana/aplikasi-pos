@@ -15,7 +15,12 @@ class Authentication {
     }
 
     public static function isLoggedIn() {
-        if($_SESSION["admin"]) {
+        
+        if(!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if(isset($_SESSION["admin"]) && $_SESSION["admin"]) {
             return true;
         } 
 
