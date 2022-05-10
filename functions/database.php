@@ -7,6 +7,7 @@ class DB
     static private $pdo;
     static private $_where = [];
     static private $_join = [];
+    static private $_leftjoin = [];
     static private $_orderby = "";
     static private $_update = [];
     static private $_insert = [];
@@ -34,6 +35,7 @@ class DB
             // Reset properties
             self::$_where = [];
             self::$_join = [];
+            self::$_leftjoin = [];
             self::$_update = [];
             self::$_insert = [];
             self::$_select = "*";
@@ -142,9 +144,27 @@ class DB
         return new static();
     }
 
+    public static function orwhere($column, $operator, $value)
+    {
+        if (count(self::$_where) > 0) {
+            self::$_where[] = " or $column $operator '$value'";
+        } else {
+            self::$_where[] = " where $column $operator '$value'";
+        }
+
+        return new static();
+    }
+
     public static function join($relation, $columna, $columnb)
     {
         self::$_join[] = " inner join $relation on $columna=$columnb";
+
+        return new static();
+    }
+
+    public static function leftjoin($relation, $columna, $columnb)
+    {
+        self::$_join[] = " left join $relation on $columna=$columnb";
 
         return new static();
     }
@@ -166,6 +186,10 @@ class DB
                 $query = "select $_select from $_table";
 
                 foreach (self::$_join as $key => $value) {
+                    $query .= $value;
+                }
+
+                foreach (self::$_leftjoin as $key => $value) {
                     $query .= $value;
                 }
 

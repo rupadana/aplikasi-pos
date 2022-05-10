@@ -13,4 +13,8 @@ class Query {
     public static function delete($id) {
         return DB::table(static::$table)->where(static::$primaryKey, "=", $id)->delete();
     }
+
+    public static function truncate() {
+        return DB::table(static::$table)->delete();
+    }
 }

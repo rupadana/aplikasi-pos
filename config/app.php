@@ -2,5 +2,8 @@
 
 
 return [
-    "name" => "POS"
+    "name" => "POS",
+    "view-only" => [
+        "print/bukti-pembayaran"
+    ]
 ];

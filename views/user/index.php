@@ -32,7 +32,7 @@
 										<center><img src="assets/img/user/<?php echo $hasil['gambar'];?>"  alt="#" style="width:200px;border:4px solid #ddd;"/></center>			
 									</div>
 									<div class="panel-footer">
-										<form method="POST" action="fungsi/edit/edit.php?gambar=user" enctype="multipart/form-data">
+										<form method="POST" action="controllers/user.php?action=update-image" enctype="multipart/form-data">
 											<input type="file" accept="image/*" name="foto">
 											<input type="hidden" value="<?php echo $hasil['gambar'];?>" name="foto2">
 											<input type="hidden"  name="id" value="<?php echo $hasil['id_member'];?>">
