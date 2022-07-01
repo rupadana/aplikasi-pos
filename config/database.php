@@ -2,8 +2,8 @@
 
 
 return [
-    "host" => "127.0.0.1",
-    "username" => "root",
-    "password" => "",
+    "host" => "db",
+    "username" => "aplikasi-pos",
+    "password" => "1jbsUYlINLhAYiXMHp/7jJJ4uXc=",
     "database" => "db_toko"
 ];
